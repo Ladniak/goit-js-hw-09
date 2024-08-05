@@ -7,8 +7,6 @@ let formData = {
     message: ""
 };
 
-console.log(formData);
-
 
 const fielFormFileds = () => {
     const lsFromData = JSON.parse(localStorage.getItem('feedback-form-state'));
