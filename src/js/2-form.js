@@ -7,6 +7,9 @@ let formData = {
     message: ""
 };
 
+console.log(formData);
+
+
 const fielFormFileds = () => {
     const lsFromData = JSON.parse(localStorage.getItem('feedback-form-state'));
 
@@ -27,7 +30,7 @@ fielFormFileds();
 
 const onFormChange = event => {
     const fieldName = event.target.name;
-    const fieldValue = event.target.value;
+    const fieldValue = event.target.value.trim();
 
     formData[fieldName] = fieldValue;
 
@@ -35,15 +38,16 @@ const onFormChange = event => {
 };
 
 const onFeetBackForm = event => {
-    
+    event.preventDefault();
+
     if (inputForm.value === "" || textAreaForm.value === "") {
         alert("Fill please all fields");
     } else {
-        event.preventDefault();
         event.target.reset();
-
         localStorage.removeItem('feedback-form-state');
         console.log(formData);
+        formData["email"] = "";
+        formData["message"] = "";
     }
 };
 
